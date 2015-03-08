@@ -39,9 +39,9 @@ Tasks
     https://github.com/LoyolaChicagoBooks/introcs-scala-arrays and pressing the
     Fork button you see in the upper right corner.
 
-```
-git clone https://github.com/YourGitHubUsername/introcs-scala-arrays.git
-```
+    ```
+    git clone https://github.com/YourGitHubUsername/introcs-scala-arrays.git
+    ```
 
 -   Make modifications to `arrays/arrays.scala`. You might want to copy the
     file `arrays.scala` to a backup name just in case you need to start over
@@ -52,17 +52,17 @@ git clone https://github.com/YourGitHubUsername/introcs-scala-arrays.git
 
 -   Recall that you can declare an array in two ways:
 
-```scala
-val myArray1 = Array[Int](10)
-val myArray2 = Array[Int](7, 7, 3, 5, 5, 5, 1, 2, 1, 2)
-```
+    ```scala
+    val myArray1 = Array[Int](10)
+    val myArray2 = Array[Int](7, 7, 3, 5, 5, 5, 1, 2, 1, 2)
+    ```
 
 -   Scala can also *infer* the type of an array, as long as you have taken 
     care to ensure each argument has the same type.
 
-```scala
-val myArray3 = Array(7, 7, 3, 5, 5, 5, 1, 2, 1, 2)
-````
+    ```scala
+    val myArray3 = Array(7, 7, 3, 5, 5, 5, 1, 2, 1, 2)
+    ```
 
 Hints
 -------
@@ -75,9 +75,17 @@ Hints
     As you write each of the functions, more and more tests will start to pass (turn green), which
     is the point of this lab.
 
--   The first method has, ```def arraySize(a : Array[Int]) : Int = { ... }```scala has
-    already been implemented for you. It is implemented trivially by calling ```a.length```scala.
+-   The first method has already been implemented as an example:
 
+    ```scala
+    def arraySize(a : Array[Int]) : Int = {
+      a.length
+    }
+    ```
+
+    The "requirement" of this function was to get the size of an array of Int (Array[Int]). When
+    you run `sbt test`, you will notice that this test "passes" because the actual length
+    of the array was returned.
 
 -   You can also look at the file `arrays_tests.scala` to see how each of the tests are 
     being done. We'll go over this when running the lab, but you may find that you can learn
