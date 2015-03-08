@@ -34,10 +34,15 @@ Tasks
 -----
 
 -   Sign into GitHub with your user ID.
+
 -   Use GitHub to fork your own copy of this lab. This is achieved by visiting 
     https://github.com/LoyolaChicagoBooks/introcs-scala-arrays and pressing the
     Fork button you see in the upper right corner.
--   `git clone https://github.com/YourGitHubUsername/introcs-scala-arrays.git`
+
+```
+git clone https://github.com/YourGitHubUsername/introcs-scala-arrays.git
+```
+
 -   Make modifications to `arrays/arrays.scala`. You might want to copy the
     file `arrays.scala` to a backup name just in case you need to start over
     with the lab assignment (e.g. `cp arrays.scala arrays.scala-orig).
@@ -58,4 +63,26 @@ val myArray2 = Array[Int](7, 7, 3, 5, 5, 5, 1, 2, 1, 2)
 ```scala
 val myArray3 = Array(7, 7, 3, 5, 5, 5, 1, 2, 1, 2)
 ````
+
+Hints
+-------
+
+-   Your job is to modify each of the functions in `arrays.scala`. We recommend
+    that you do these modifications one at a time.
+
+-   Run `sbt test` to compile and test all of the functiosn in `arrays.scala`. You
+    will likely see a lot of failed tests (in red text) and very few passed tests (in green).
+    As you write each of the functions, more and more tests will start to pass (turn green), which
+    is the point of this lab.
+
+-   The first method has, ```def arraySize(a : Array[Int]) : Int = { ... }```scala has
+    already been implemented for you. It is implemented trivially by calling ```a.length```scala.
+
+
+-   You can also look at the file `arrays_tests.scala` to see how each of the tests are 
+    being done. We'll go over this when running the lab, but you may find that you can learn
+    a lot about how to *implement* a method by looking at the test code. Our test code
+    makes use of some advanced Scala features not yet covered in class.
+
+
 
