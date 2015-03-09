@@ -1,5 +1,5 @@
 import org.scalatest._
-import arraylab._
+import arrays._
 import scala.util.{Try, Success, Failure}
 
 /*
