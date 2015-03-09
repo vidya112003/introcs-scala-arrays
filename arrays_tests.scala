@@ -1,6 +1,6 @@
 import org.scalatest._
 import arrays._
-import scala.util.{Try, Success, Failure}
+import scala.util.{ Try, Success, Failure }
 
 /*
  * Note to student: You may not change this file (the tests)
@@ -20,17 +20,17 @@ class RationalScalaTestFlatSpecMatchers extends FlatSpec with Matchers {
 
   it should "handle different labels" in {
     val result = getIntsAsString("label2: ", ":", Array[Int](1, 2, 3))
-    result should be ("label1: 1:2:3")    
+    result should be ("label1: 1:2:3")
   }
 
   "minimum()" should "not work for 0-length array" in {
     intercept[IllegalArgumentException] {
-      val minValue = minimum( Array[Int]())
+      val minValue = minimum(Array[Int]())
     }
   }
 
   it should "work for a >0-length array" in {
-    val minValue = minimum( Array(5, 10, 2, 4, 8, 6, -1, -3))
+    val minValue = minimum(Array(5, 10, 2, 4, 8, 6, -1, -3))
     minValue should be (-3)
   }
 
@@ -72,18 +72,18 @@ class RationalScalaTestFlatSpecMatchers extends FlatSpec with Matchers {
   }
 
   "pairwiseAdd()" should "add corresponding elements of arrays" in {
-     val a = Array(1, 2, 4, 6, 8, 10)
-     val b = Array(1, 2, 4, 6, 8, 10, 13)
-     val result = Array.fill(5)(0)
-     pairwiseAdd(a, b, result)
-     result should be (Array(2, 4, 8, 12, 16))
+    val a = Array(1, 2, 4, 6, 8, 10)
+    val b = Array(1, 2, 4, 6, 8, 10, 13)
+    val result = Array.fill(5)(0)
+    pairwiseAdd(a, b, result)
+    result should be (Array(2, 4, 8, 12, 16))
   }
 
   "newPairwiseAdd()" should "add corresponding elements of arrays" in {
-     val a = Array(1, 2, 4, 6, 8, 10, 13, 15)
-     val b = Array(1, 2, 4, 6, 8, 10, 13)
-     val result = newPairwiseAdd(a, b)
-     result should be (Array(2, 4, 8, 12, 16, 20, 26))
+    val a = Array(1, 2, 4, 6, 8, 10, 13, 15)
+    val b = Array(1, 2, 4, 6, 8, 10, 13)
+    val result = newPairwiseAdd(a, b)
+    result should be (Array(2, 4, 8, 12, 16, 20, 26))
   }
 
   "isAscending()" should "work with this data" in {
@@ -128,4 +128,3 @@ class RationalScalaTestFlatSpecMatchers extends FlatSpec with Matchers {
   }
 }
 
- 
