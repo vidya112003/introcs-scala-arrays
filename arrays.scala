@@ -2,126 +2,192 @@ import scala.math.min
 
 object arrays {
 
-  /*
-     getIntsAsString
-   For example: If the Array contains 1, 2, 3, 4, 5
-     printInts("my array ", Array(1, 2, 3, 4, 5), " : ") gives
-     myarray 1:2:3:4:5
-  */
+  
 
   def arraySize(a: Array[Int]): Int = {
     a.length
   }
 
   def getIntsAsString(label: String, delimiter: String, a: Array[Int]): String = {
-    ""
+    val length=arraySize(a)
+	var result=label
+	if(a==Array()){
+		 result
+	}
+	else{
+		result+=""
+		for(b<-0 to a.length-1){
+			result+=a{b}
+			if(a{b}!=a(a.length-1)){
+				result+=delimiter
+			}
+		}
+		result
+	}
   }
-
-  // Read the contents of filename into a.
-  // You should only read as many lines as the array can hold (a.length)
-  // Each line should be converted to Int (if possible) or 0 otherwise.
-
+  
   def readFileIntoArray(filename: String, a: Array[Int]) {
-
+         def readFileIntoArray(filename: String, a: Array[Int]) {
+		var elNumero=0
+		for (line <- Source.fromFile(filename).getLines()) {
+			if(arraySize(a)!=elNumero){
+			 a(elNumero)=line.toInt
+			 elNumero+=1
+		}
+	}	
   }
+  
 
-  //Minimum chunk
-  ///  Return the minimum value in a.
-  ///  Example: If a contains {5, 7, 4, 9}, return 4. 
-  ///  Assume a contains at least one value.
-
+  
   def minimum(a: Array[Int]): Int = {
-    require(a.length > 0) // if you delete this, the tests will not pass!
-
-    return 0; // so stub compiles
+    require(a.length > 0) 
+    var min=a(0)
+		var index=0
+		for(i<- a){
+			if(i!=a(0)){
+				if(i<a(index)){
+					min=i
+				}
+				index=index+1
+			}
+		}
+		min		
   }
-  //CountEven chunk
-  ///  Return the number of even values in a.
-  ///  Example: If a contains {-4, 7, 6, 12, 9}, return 3. 
+    
   def countEven(a: Array[Int]): Int = {
-    return 0; // so stub compiles
+     var evenNumberTracker=0
+		for(i<-a){
+			if(i%2==0){
+				evenNumberTracker+=1
+			}
+		}
+		evenNumberTracker
   }
 
-  //CountEven chunk
-  ///  Return the number of even values in a.
-  ///  Example: If a contains {-4, 7, 6, 12, 9}, return 3. 
-
+  
+  
   def countOdd(a: Array[Int]): Int = {
-    return 0; // so stub compiles
+    var oddNumberTracker=0
+		for(i<-a){
+			if(i%2!=0){
+				oddNumberTracker+=1
+			}
+		}
+		oddNumberTracker
   }
+  
 
-  //PairwiseAdd chunk
-  ///  Add corresponding elements of a and b and place them in sum.
-  ///  Assume all arrays have the same Length.
-  ///  Example: If a contains {2, 4, 6} and b contains {7, -1, 8}
-  ///  then at the end sum should contain {9, 3, 14}. 
-
+  
   def pairwiseAdd(a: Array[Int], b: Array[Int], c: Array[Int]) {
-
+      var indexTracker=0
+	  var thingToReturn=""
+		while(indexTracker!=a.length){
+		c{indexTracker}=a{indexTracker}+b{indexTracker}
+		indexTracker+=1
+		}
+		thingToReturn+="{"
+		for(z<-0 to c.length-1){
+			thingToReturn+=(c(z))
+			if(z!=2){
+				thingToReturn+=","
+			}
+		}
+		thingToReturn+="}"
+	  	thingToReturn
   }
-  //NewPairwiseAdd chunk
-  ///  Return a new array whose elements are the sums of the
-  ///  corresponding elements of a and b.
-  ///  Assume a and b have the same Length.
-  ///  Example: If a contains {2, 4, 6} and b contains {3, -1, 5}
-  ///  then return an array containing {5, 3, 11}. 
+  
   def newPairwiseAdd(a: Array[Int], b: Array[Int]): Array[Int] = {
     val addSize = min(a.length, b.length)
     val newArray = Array.fill(addSize)(0)
 
-    // your code here
-
+    var indexTracker=0
+		while(indexTracker!=a.length){
+			newArray{indexTracker}=a{indexTracker}+b{indexTracker}
+			indexTracker=indexTracker+1
+        }
     newArray
   }
-  //IsAscending chunk
-  ///  Return true if the numbers are sorted in increasing order,
-  ///  so that in each pair of consecutive entries,
-  ///  the second is always at least as large as the first.
-  ///  Return false otherwise.  Assume an array with fewer than
-  ///  two elements is ascending.
-  ///  Examples: If a contains {2, 5, 5, 8}, return true;
-  ///  if a contains {2, 5, 3, 8}, return false. 
+  
   def isAscending(a: Array[Int]): Boolean = {
-    false
+      var flag=1
+	    
+		for(b<-0 to a.length-2){
+			if(a(b)<=a(b+1)){
+				if(flag==1){
+					flag=1
+				}
+			}
+			else{
+				flag=0
+			}
+		}
+		if(flag==1){
+			 true
+		}
+		else{
+			 false
+		}
+	   
   }
 
-  /*
-     getAscendingRun(a, position) returns the position where a 
-     run (of ascending values) ends. If a run ends at the end of
-     the array, the array's length is returned. This function is 
-     designed to be called over and over until there are no more 
-     runs.
-
-    example:
-
-    If you ahve an array of data:
-    val data = Array(2, 5, 8, 3, 9, 9, 8)
-
-    getAscendingRun(data, 0) returns 3 (since 3 < 8)
-      run is 2, 5, 8
-    getAscendingRun(data, 3) returns 6 (since 8 < 9)
-      run is 3, 9, 9
-    getAscendingRun(data, 6) returns 7 (since 8 is the last item in the list)
-      run is 8
-
-  */
+  
 
   def getAscendingRun(a: Array[Int], position: Int): Int = {
     require(position < a.length)
-
-    -1 // replace with your code, which should return Int
+    var boomerang=0;
+	var numToCompare=a(position)
+	var alreadyFound="not found"
+	for(b<-position to a.length-1){
+		if((a(b)<numToCompare)&&(alreadyFound!="found")){
+			if(b!=a.length){
+				boomerang=b
+				alreadyFound="found"
+			}
+		 }
+		   
+		  numToCompare=a(b)
+	  }
+	  if(boomerang==0){
+		  boomerang=a.length
+	}
+	  boomerang
+   
   }
+    
 
-  /*
-    This should use teh getAscendingRun() function to produce a string
-    of runs. The runs should be separated by commas with a vertical bar
-    between each run. In the above:
-
-    2, 5, 8 | 3, 9, 9 | 8
-  */
+  
 
   def getRunsAsString(a: Array[Int]): String = {
-    ""
+    var baseball=""
+	  var iterator=0
+	  var currIndex=0
+	  var x=0
+	  var incrementer=0
+	  var position=0
+	  var secondIncrementer=0
+	  while(iterator!=a.length){
+		  currIndex=getAscendingRun(a,position)
+		  for(b<-position to currIndex-1){
+			  incrementer+=1
+			  baseball+=a(b)
+			  if(b!=currIndex-1){
+				  baseball+=", "
+			  }
+		  }
+		  baseball+=" | "
+		  position=currIndex
+		  iterator=getAscendingRun(a,position)
+	
+		  }
+	  for(c<-incrementer to a.length-1){
+		   if(x==1){
+			  baseball+=", "
+		  }
+		  baseball+=a(c)
+		  
+		  x+=1
+	  }
+	  baseball
   }
-  // end PrintRuns chunk   
+   
 }
